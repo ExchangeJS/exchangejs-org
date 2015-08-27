@@ -1,0 +1,36 @@
+{
+  "name": "exchangejs.com",
+  "version": "1.0.0",
+  "description": "Exchance.js website",
+  "main": "index.js",
+  "dependencies": {
+    "babelify": "^6.2.0",
+    "browserify": "^11.0.1",
+    "gulp": "^3.9.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^1.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ExchangeJS/exchangejs.github.io.git"
+  },
+  "keywords": [
+    "meetup",
+    "exchangejs",
+    "website"
+  ],
+  "author": "Mark Bennett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ExchangeJS/exchangejs.github.io/issues"
+  },
+  "homepage": "https://github.com/ExchangeJS/exchangejs.github.io#readme"
+}
