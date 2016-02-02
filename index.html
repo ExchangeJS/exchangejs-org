@@ -42,6 +42,12 @@
     width: 100% !important;
   }
   </style>
+  <script>
+  var addy = window.location.href;
+  if (addy.indexOf('http://www.exchangejs.com') === 0) {
+      window.location.href = addy.replace(/^http/, 'https');
+  } 
+  </script>
 </head>
 <body>
 
