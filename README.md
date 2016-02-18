@@ -13,7 +13,7 @@ First, checkout this repository:
 Open a terminal in the new directory, and install the sites dependencies:
 
     cd exchangejs.github.io
-		npm install
+    npm install
 
 ## Workflow
 
