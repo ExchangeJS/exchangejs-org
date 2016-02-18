@@ -16,6 +16,5 @@ module.exports = {
               }
             }
         ]
-    },
-    devtool: "#eval"
+    }
 };
