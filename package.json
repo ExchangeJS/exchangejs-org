@@ -14,8 +14,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot"
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot",
+    "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js"
   },
   "repository": {
     "type": "git",
