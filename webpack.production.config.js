@@ -2,10 +2,13 @@ var path = require('path');
 var node_modules_dir = path.resolve(__dirname, 'node_modules');
 
 var config = {
-  entry: "./src/index.js",
+  entry: {
+      index: "./src/index.js",
+      worker: "./src/worker.js"
+  },
   output: {
-    path: path.resolve(__dirname),
-    filename: 'bundle.js'
+      filename: "[name].bundle.js",
+      chunkFilename: "[id].bundle.js"
   },
   module: {
     loaders: [{
