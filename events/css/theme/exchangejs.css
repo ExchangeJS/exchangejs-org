@@ -328,3 +328,20 @@ body {
   border: none;
   box-shadow: none;
   background: none; }
+
+/*********************************************
+* LIGHT
+*
+* For use with dark slide backgrounds where
+* the normal text would dissapear.
+*********************************************/
+.reveal .light {
+  color: #FFFFFF; }
+
+.reveal h1.light,
+.reveal h2.light,
+.reveal h3.light,
+.reveal h4.light,
+.reveal h5.light,
+.reveal h6.light {
+  color: #FFFFFF; }
