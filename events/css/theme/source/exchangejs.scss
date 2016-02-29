@@ -102,3 +102,21 @@ color: #FFFFFF;
 .reveal h6.light {
 color: #FFFFFF;
 }
+
+
+
+
+/*********************************************
+* HEADSHOT
+*********************************************/
+.reveal .headshot h1,
+.reveal .headshot h2 {
+  font-size: 2em;
+  text-align: left;
+}
+.reveal .headshot img {
+  float: left;
+  margin-top: 0;
+  margin-right: 20px;
+  padding-top: 0;
+}
