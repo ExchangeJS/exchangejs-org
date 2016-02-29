@@ -1,0 +1,123 @@
+/**
+ * A simple theme for reveal.js presentations, similar
+ * to the default theme. The accent color is darkblue.
+ **/
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Override theme settings (see ../template/settings.scss)
+// $mainFont: 'Lato', sans-serif;
+$mainColor: #000;
+// $headingFont: 'News Cycle', Impact, sans-serif;
+$headingColor: #000;
+// $headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #f0f0f0;
+$linkColor: #FF20AF;
+$linkColorHover: lighten( $linkColor, 20% );
+// $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+/*********************************************
+* OVERLAY
+*********************************************/
+.reveal .overlay .lower-third {
+background: #000000;
+bottom: 0;
+height: 80px;
+left: 0;
+position: fixed;
+width: 100%;
+z-index: 5;
+}
+.reveal .lower-third img {
+max-height: 200%;
+-webkit-transform: translate(20%, -70%) rotate(3deg);
+transform: translate(20%, -70%) rotate(3deg);
+}
+
+.reveal .lower-third h2 {
+float: right;
+font-size: 60px;
+padding: 10px 10px 0 0;
+}
+
+/*********************************************
+* HIDDEN
+*********************************************/
+.reveal .hidden {
+display: none;
+}
+
+/*********************************************
+* CREDITS
+*********************************************/
+.reveal .credit {
+font-size: 20px;
+margin-top: 65px;
+}
+
+/*********************************************
+* CODE
+*********************************************/
+.reveal code {
+text-transform: none;
+}
+
+
+/*********************************************
+* IMAGES
+*********************************************/
+.reveal section img {
+border: none;
+box-shadow: none;
+background: none;
+}
+
+
+/*********************************************
+* LIGHT
+*
+* For use with dark slide backgrounds where
+* the normal text would dissapear.
+*********************************************/
+
+.reveal .light {
+color: #FFFFFF;
+}
+
+.reveal h1.light,
+.reveal h2.light,
+.reveal h3.light,
+.reveal h4.light,
+.reveal h5.light,
+.reveal h6.light {
+color: #FFFFFF;
+}
+
+
+
+
+/*********************************************
+* HEADSHOT
+*********************************************/
+.reveal .headshot h1,
+.reveal .headshot h2 {
+  font-size: 2em;
+  text-align: left;
+}
+.reveal .headshot img {
+  width: 400px;
+  float: left;
+  margin-top: 0;
+  margin-right: 20px;
+  padding-top: 0;
+}
