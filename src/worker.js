@@ -12,18 +12,14 @@ function openCache(storage, cache_name) {
   return Promise.all([storage, storage.open(cacheName(CACHE_VERSION)), cache_name]);
 }
 
+const REMOTE_URLS_TO_CACHE = [
+  'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css',
+  'https://maps.google.com/maps/api/staticmap?center=53.5461361,-113.4991690&zoom=15&size=240x180&maptype=roadmap&sensor=false&language=&markers=color:green|label:none|53.5461361,-113.4991690',
+  'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff'
+];
+
 function cacheRequests(cache) {
-  return cache.addAll([
-    '.',
-    './index.bundle.js',
-    './favicon.ico',
-    './code-of-conduct.html',
-    './sponsorship.html',
-    './startup-edmonton.png',
-    'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css',
-    'https://maps.google.com/maps/api/staticmap?center=53.5461361,-113.4991690&zoom=15&size=240x180&maptype=roadmap&sensor=false&language=&markers=color:green|label:none|53.5461361,-113.4991690',
-    'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff'
-  ]);
+  return cache.addAll(REMOTE_URLS_TO_CACHE.concat(__FILES_TO_CACHE__));
 }
 
 function clearOldCaches(storage, cache_name) {
