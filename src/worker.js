@@ -28,13 +28,18 @@ function clearOldCaches(storage, cache_name) {
     then((keys) => keys.map(key => storage.delete(key)));
 };
 
+function refreshCache() {
+  return
+    openCache(caches, cacheName(CACHE_VERSION)).
+    then(([storage, cache, cache_name]) => cacheRequests(cache).then((_) => [storage, cache_name])).
+    then(([storage, cache_name]) => clearOldCaches(storage, cache_name));
+}
+
 self.addEventListener('install', function(event) {
   console.log("SW installed");
 
   if (__CACHE_ENABLED__) {
-    openCache(caches, cacheName(CACHE_VERSION)).
-    then(([storage, cache, cache_name]) => cacheRequests(cache).then((_) => [storage, cache_name])).
-    then(([storage, cache_name]) => clearOldCaches(storage, cache_name));
+    event.waitUntil(refreshCache);
   }
 });
 
