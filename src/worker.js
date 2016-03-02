@@ -35,9 +35,11 @@ function clearOldCaches(storage, cache_name) {
 self.addEventListener('install', function(event) {
   console.log("SW installed");
 
-  openCache(caches, cacheName(CACHE_VERSION)).
-  then(([storage, cache, cache_name]) => cacheRequests(cache).then((_) => [storage, cache_name])).
-  then(([storage, cache_name]) => clearOldCaches(storage, cache_name));
+  if (__CACHE_ENABLED__) {
+    openCache(caches, cacheName(CACHE_VERSION)).
+    then(([storage, cache, cache_name]) => cacheRequests(cache).then((_) => [storage, cache_name])).
+    then(([storage, cache_name]) => clearOldCaches(storage, cache_name));
+  }
 });
 
 self.addEventListener('activate', function(event) {
@@ -47,9 +49,13 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
   console.log("Caught a fetch!" + event.request.url);
 
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
-    })
-  );
+  if (__CACHE_ENABLED__) {
+    event.respondWith(fetch(event.request));
+  } else {
+    event.respondWith(
+      caches.match(event.request).then(function(response) {
+        return response || fetch(event.request);
+      })
+    );
+  }
 });
