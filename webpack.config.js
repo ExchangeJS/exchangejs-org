@@ -1,3 +1,12 @@
+const webpack = require('webpack');
+const fs = require('fs');
+
+// definePlugin takes raw strings and inserts them, so you can put strings of JS if you want.
+const definePlugin = new webpack.DefinePlugin({
+  __CACHE_ENABLED__: false,
+  __VERSION__: Date.now()
+});
+
 module.exports = {
     entry: {
         index: "./src/index.js",
@@ -19,5 +28,6 @@ module.exports = {
               }
             }
         ]
-    }
+    },
+    plugins: [definePlugin]
 };
