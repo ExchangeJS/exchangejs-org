@@ -60,3 +60,8 @@ self.addEventListener('fetch', function(event) {
     );
   }
 });
+
+self.addEventListener('message', function(event) {
+  console.dir(event);
+  console.log('Pong!');
+});
