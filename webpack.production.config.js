@@ -16,7 +16,9 @@ const FILES_TO_EXCLUDE = [
   'package.json',
   'src',
   'webpack.config.js',
-  'webpack.production.config.js'
+  'webpack.production.config.js',
+  'worker.bundle.js',
+  'worker.bundle.js.map'
 ];
 function arr_includes(arr, target) {
   return arr.filter((elem) => elem === target).length > 0;
