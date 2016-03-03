@@ -41,6 +41,12 @@
   .jumbotron.footer iframe {
     width: 100% !important;
   }
+  .sw {
+    display: none;
+  }
+  .service-workers .sw {
+    display: block;
+  }
   </style>
   <script>
   var addy = window.location.href;
@@ -244,6 +250,10 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="sw">
+    <input type="button" id="sw-ping" value="Ping">
   </div>
 
   <script src="index.bundle.js"></script>
