@@ -52,7 +52,7 @@
 	// be aware that any global state is likely to disappear
 	console.log("SW startup");
 	
-	var CACHE_VERSION = (95
+	var CACHE_VERSION = (97
 	);
 	
 	function cacheName(version) {
@@ -66,7 +66,7 @@
 	var URLS_TO_CACHE = ['https://www.exchangejs.com/', 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css', 'https://maps.google.com/maps/api/staticmap?center=53.5461361,-113.4991690&zoom=15&size=240x180&maptype=roadmap&sensor=false&language=&markers=color:green|label:none|53.5461361,-113.4991690', 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff'];
 	
 	function cacheRequests(cache) {
-	  return cache.addAll(REMOTE_URLS_TO_CACHE.concat((["bundle.js","bundle.js.map","code-of-conduct.html","december-2013-meetup-photo.jpg","ejs.png","favicon.ico","index-archive.html","index.bundle.js","index.bundle.js.map","index.html","january-2013-meetup-photo.jpg","november-meetup-photo.jpg","sponsorship.html","startup-edmonton.png","startup_edmonton.jpg"])));
+	  return cache.addAll(URLS_TO_CACHE.concat((["bundle.js","bundle.js.map","code-of-conduct.html","december-2013-meetup-photo.jpg","ejs.png","favicon.ico","index-archive.html","index.bundle.js","index.bundle.js.map","index.html","january-2013-meetup-photo.jpg","november-meetup-photo.jpg","sponsorship.html","startup-edmonton.png","startup_edmonton.jpg"])));
 	}
 	
 	function clearOldCaches(storage, cache_name) {
