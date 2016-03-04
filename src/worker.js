@@ -42,6 +42,7 @@ function refreshCache() {
 self.addEventListener('install', function(event) {
   console.log("SW installed");
 
+  refreshCache();
 });
 
 self.addEventListener('activate', function(event) {

@@ -52,7 +52,7 @@
 	// be aware that any global state is likely to disappear
 	console.log("SW startup");
 	
-	var CACHE_VERSION = (98
+	var CACHE_VERSION = (99
 	);
 	
 	function cacheName(version) {
@@ -106,6 +106,8 @@
 	
 	self.addEventListener('install', function (event) {
 	  console.log("SW installed");
+	
+	  refreshCache();
 	});
 	
 	self.addEventListener('activate', function (event) {
