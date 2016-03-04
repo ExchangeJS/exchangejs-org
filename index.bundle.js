@@ -1,2 +1,70 @@
-!function(e){function r(t){if(o[t])return o[t].exports;var n=o[t]={exports:{},id:t,loaded:!1};return e[t].call(n.exports,n,n.exports,r),n.loaded=!0,n.exports}var o={};return r.m=e,r.c=o,r.p="",r(0)}([function(e,r){"use strict";navigator.serviceWorker&&(document.body.classList.add("service-workers"),navigator.serviceWorker.register("worker.bundle.js").then(function(e){console.log("SW registered. ◕‿◕",e)},function(e){console.log("SW register failed! ಠ_ಠ",e)}),document.getElementById("sw-ping").addEventListener("click",function(e){e.preventDefault(),console.log("ping"),navigator.serviceWorker.controller.postMessage("ping")}))}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	// Register the service worker
+	if (navigator.serviceWorker) {
+		document.body.classList.add('service-workers');
+	
+		navigator.serviceWorker.register('worker.bundle.js').then(function (reg) {
+			console.log('SW registered. ◕‿◕', reg);
+		}, function (err) {
+			console.log('SW register failed! ಠ_ಠ', err);
+		});
+	
+		// Wire up SW interface
+		document.getElementById('sw-ping').addEventListener('click', function (e) {
+			e.preventDefault();
+	
+			console.log('ping');
+			navigator.serviceWorker.controller.postMessage("ping");
+		});
+	}
+
+/***/ }
+/******/ ]);
 //# sourceMappingURL=index.bundle.js.map
