@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 	
@@ -52,38 +52,41 @@
 	// be aware that any global state is likely to disappear
 	console.log("SW startup");
 	
-	var CACHE_VERSION = (97
+	var CACHE_VERSION = (98
 	);
 	
 	function cacheName(version) {
-	  return 'request-cache-' + CACHE_VERSION;
+	  return "request-cache-" + CACHE_VERSION;
 	}
 	
 	function openCache(storage, cache_name) {
+	  console.log("Opening cache");
 	  return Promise.all([storage, storage.open(cacheName(CACHE_VERSION)), cache_name]);
 	}
 	
 	var URLS_TO_CACHE = ['https://www.exchangejs.com/', 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css', 'https://maps.google.com/maps/api/staticmap?center=53.5461361,-113.4991690&zoom=15&size=240x180&maptype=roadmap&sensor=false&language=&markers=color:green|label:none|53.5461361,-113.4991690', 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff'];
 	
 	function cacheRequests(cache) {
+	  console.log("Caching requests");
 	  return cache.addAll(URLS_TO_CACHE.concat((["bundle.js","bundle.js.map","code-of-conduct.html","december-2013-meetup-photo.jpg","ejs.png","favicon.ico","index-archive.html","index.bundle.js","index.bundle.js.map","index.html","january-2013-meetup-photo.jpg","november-meetup-photo.jpg","sponsorship.html","startup-edmonton.png","startup_edmonton.jpg"])));
 	}
 	
 	function clearOldCaches(storage, cache_name) {
+	  console.log("Clearing keys");
 	  return storage.keys().then(function (keys) {
 	    return keys.filter(function (key) {
 	      return key !== cache_name;
 	    });
 	  }).then(function (keys) {
-	    return keys.map(function (key) {
+	    return Promise.all(keys.map(function (key) {
 	      return storage.delete(key);
-	    });
+	    }));
 	  });
 	};
 	
 	function refreshCache() {
-	  return;
-	  openCache(caches, cacheName(CACHE_VERSION)).then(function (_ref) {
+	  console.log("Refreshing cache..");
+	  return openCache(caches, cacheName(CACHE_VERSION)).then(function (_ref) {
 	    var _ref2 = _slicedToArray(_ref, 3);
 	
 	    var storage = _ref2[0];
@@ -103,10 +106,6 @@
 	
 	self.addEventListener('install', function (event) {
 	  console.log("SW installed");
-	
-	  if (true) {
-	    event.waitUntil(refreshCache);
-	  }
 	});
 	
 	self.addEventListener('activate', function (event) {

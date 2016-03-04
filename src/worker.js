@@ -9,6 +9,7 @@ function cacheName(version) {
 }
 
 function openCache(storage, cache_name) {
+  console.log("Opening cache");
   return Promise.all([storage, storage.open(cacheName(CACHE_VERSION)), cache_name]);
 }
 
@@ -20,18 +21,20 @@ const URLS_TO_CACHE = [
 ];
 
 function cacheRequests(cache) {
+  console.log("Caching requests");
   return cache.addAll(URLS_TO_CACHE.concat(__FILES_TO_CACHE__));
 }
 
 function clearOldCaches(storage, cache_name) {
+  console.log("Clearing keys");
   return storage.keys().
     then((keys) => keys.filter(key => key !== cache_name)).
-    then((keys) => keys.map(key => storage.delete(key)));
+    then((keys) => Promise.all(keys.map(key => storage.delete(key))));
 };
 
 function refreshCache() {
-  return
-    openCache(caches, cacheName(CACHE_VERSION)).
+  console.log("Refreshing cache..");
+  return openCache(caches, cacheName(CACHE_VERSION)).
     then(([storage, cache, cache_name]) => cacheRequests(cache).then((_) => [storage, cache_name])).
     then(([storage, cache_name]) => clearOldCaches(storage, cache_name));
 }
@@ -39,9 +42,6 @@ function refreshCache() {
 self.addEventListener('install', function(event) {
   console.log("SW installed");
 
-  if (__CACHE_ENABLED__) {
-    event.waitUntil(refreshCache);
-  }
 });
 
 self.addEventListener('activate', function(event) {
