@@ -20,7 +20,7 @@ const URLS_TO_CACHE = [
 ];
 
 function cacheRequests(cache) {
-  return cache.addAll(REMOTE_URLS_TO_CACHE.concat(__FILES_TO_CACHE__));
+  return cache.addAll(URLS_TO_CACHE.concat(__FILES_TO_CACHE__));
 }
 
 function clearOldCaches(storage, cache_name) {
