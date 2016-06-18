@@ -1,5 +1,7 @@
 # Exchangejs.com
 
+[![Join the chat at https://gitter.im/ExchangeJS/exchangejs.github.io](https://badges.gitter.im/ExchangeJS/exchangejs.github.io.svg)](https://gitter.im/ExchangeJS/exchangejs.github.io?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This repo hosts [the official ExchangeJS website](https://exchangejs.com). Interesting things about it:
 
  * We build ES6 with Webpack (see Workflow)
